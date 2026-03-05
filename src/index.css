@@ -1,15 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020205;
+  --color-charcoal: #0a0a0f;
+  --color-primary: #ff5e00;
+  --color-secondary: #ffffff;
+  --color-accent: #ffaa00;
+  --color-glass-bg: rgba(255, 255, 255, 0.02);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  --font-sans: "Outfit", "Inter", sans-serif;
+  --font-heading: "Outfit", "Syne", sans-serif;
+  --font-body: "Outfit", "Inter", "Satoshi", sans-serif;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-levitate: levitate 5s ease-in-out infinite;
+  --animate-glow-border: glow-border 3s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-30px) rotate(1deg);
+    }
+  }
+
+  @keyframes levitate {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes glow-border {
+
+    0%,
+    100% {
+      border-color: rgba(255, 94, 0, 0.1);
+    }
+
+    50% {
+      border-color: rgba(255, 94, 0, 0.5);
+    }
+  }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --neon-primary: #ff5e00;      /* Main orange from image */
-  --neon-secondary: #ff7a1a;    /* Slight lighter glow */
-  --neon-amber: #ffaa00;        /* Soft highlight glow */
-  --bg-dark: #0a0a0f;           /* Deep cinematic black */
-  --bg-darker: #050507;         /* Darker sections */
+  --neon-primary: #ff5e00;
+  /* Main orange from image */
+  --neon-secondary: #ff7a1a;
+  /* Slight lighter glow */
+  --neon-amber: #ffaa00;
+  /* Soft highlight glow */
+  --bg-dark: #0a0a0f;
+  /* Deep cinematic black */
+  --bg-darker: #050507;
+  /* Darker sections */
   --text-light: #e6e6e6;
+  --neon-blue: #ff5e00;
+  --neon-orange: #ff5e00;
 }
 
 body {
@@ -19,8 +81,9 @@ body {
   color: #e0e0e0;
   font-family: 'Outfit', 'Inter', sans-serif;
   overflow-x: hidden;
- 
+
 }
+
 .hero-bg {
   position: relative;
   min-height: 100vh;
@@ -29,11 +92,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .hero-bg::before {
   display: none;
 }
 
-.hero-bg > * {
+.hero-bg>* {
   position: relative;
   z-index: 2;
 }
@@ -47,16 +111,14 @@ h6 {
   font-family: 'Outfit', sans-serif;
   letter-spacing: -0.04em;
   font-weight: 900;
- 
+
 }
 
 /* Neural Network Background Effect - Orange */
 .bg-neural {
-  background-image: radial-gradient(
-    circle at 2px 2px,
-    rgba(255, 94, 0, 0.15) 1px,
-    transparent 0
-  );
+  background-image: radial-gradient(circle at 2px 2px,
+      rgba(255, 94, 0, 0.15) 1px,
+      transparent 0);
   background-size: 40px 40px;
 }
 
@@ -75,14 +137,14 @@ h6 {
 }
 
 .text-glow-primary {
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 94, 0, 0.8),
     0 0 25px rgba(255, 94, 0, 0.4),
     0 0 40px rgba(255, 122, 26, 0.3);
 }
 
 .border-glow-primary {
-  box-shadow: 
+  box-shadow:
     0 0 15px rgba(255, 94, 0, 0.4),
     0 0 40px rgba(255, 94, 0, 0.2);
 }
@@ -98,12 +160,10 @@ h6 {
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 94, 0, 0.15) 0%,
-    rgba(255, 122, 26, 0.08) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 94, 0, 0.15) 0%,
+      rgba(255, 122, 26, 0.08) 40%,
+      transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
@@ -144,6 +204,7 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neon-blue);
 }
+
 .glass {
   background: rgba(255, 94, 0, 0.03);
   backdrop-filter: blur(20px);
@@ -157,13 +218,12 @@ h6 {
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 94, 0, 0.1);
 }
+
 .btn-neon {
-  background: linear-gradient(
-    135deg,
-    var(--neon-primary),
-    var(--neon-secondary)
-  );
-  box-shadow: 
+  background: linear-gradient(135deg,
+      var(--neon-primary),
+      var(--neon-secondary));
+  box-shadow:
     0 0 15px rgba(255, 94, 0, 0.6),
     0 0 40px rgba(255, 94, 0, 0.3);
   transition: all 0.4s ease;
@@ -171,7 +231,7 @@ h6 {
 
 .btn-neon:hover {
   transform: translateY(-4px);
-  box-shadow: 
+  box-shadow:
     0 0 25px rgba(255, 94, 0, 0.8),
     0 0 60px rgba(255, 94, 0, 0.5);
 }
